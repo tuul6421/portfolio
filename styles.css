@@ -431,14 +431,54 @@ body::before {
     font-size: 1.1rem;
     width: 1.6rem;
     flex-shrink: 0;
+    text-align: center;
 }
 
 .pill-row-text {
-    font-size: 0.96rem;
+    font-size: 0.94rem;
     font-weight: 500;
     color: var(--text);
     letter-spacing: 0.02em;
+    line-height: 1.5;
 }
+.pill-row-text small {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 400;
+    margin-top: 0.15rem;
+}
+
+/* Education timeline rows */
+.pill-row.edu {
+    align-items: flex-start;
+    gap: 0;
+}
+.edu-year {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    width: 2.8rem;
+    flex-shrink: 0;
+    padding-top: 0.18rem;
+}
+.edu-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--violet);
+    flex-shrink: 0;
+    margin-top: 0.28rem;
+    margin-right: 0.75rem;
+    box-shadow: 0 0 8px rgba(157,143,232,0.4);
+}
+.pill-row.highlight .edu-dot {
+    background: var(--rose);
+    box-shadow: 0 0 10px rgba(232,160,180,0.5);
+}
+.pill-row.highlight .edu-year { color: var(--rose); }
+.pill-row.highlight .pill-row-text { color: var(--text); }
 
 /* keep old grid classes so nothing breaks */
 .about-grid { display: grid; grid-template-columns: minmax(0,0.95fr) minmax(0,1.05fr); gap: 1.2rem; }
