@@ -16,9 +16,12 @@
 </head>
 
 <body>
+    <div class="bg-aurora" aria-hidden="true">
+        <div class="aurora-1"></div>
+        <div class="aurora-2"></div>
+        <div class="aurora-3"></div>
+    </div>
     <div class="bg-grid" aria-hidden="true"></div>
-    <div class="glow glow-aqua" aria-hidden="true"></div>
-    <div class="glow glow-pink" aria-hidden="true"></div>
 
     <header class="site-header">
         <nav class="nav-shell">
@@ -46,7 +49,7 @@
             <div class="hero-copy">
                 <p class="eyebrow">PORTFOLIO / INITIALIZING CREATIVE DEVELOPMENT MODE</p>
                 <h1>GANTUUL</h1>
-                <p class="hero-role">フルスタックデベロッパー</p>
+                <p class="hero-role"><span class="typing-text" id="typing-text"></span><span class="cursor"></span></p>
                 <p class="hero-lead">
                     実運用を意識したWebプロダクトを、設計からUI実装まで一貫して形にしています。
                     開発者らしいシャープさを持ちながら、やわらかく洗練された見た目にもこだわるのが私のスタイルです。
@@ -110,7 +113,7 @@
             </div>
         </section>
 
-        <section id="about" class="section">
+        <section id="about" class="section reveal">
             <div class="section-heading">
                 <p class="eyebrow">ABOUT</p>
                 <h2>技術力だけでなく、画面の空気感や印象まで設計する開発を目指しています。</h2>
@@ -148,7 +151,7 @@
             </div>
         </section>
 
-        <section id="expertise" class="section">
+        <section id="expertise" class="section reveal">
             <div class="section-heading">
                 <p class="eyebrow">EXPERTISE</p>
                 <h2>私が強く意識しているのは、「作れること」よりも「きれいに届くこと」です。</h2>
@@ -189,7 +192,7 @@
             </div>
         </section>
 
-        <section id="projects" class="section">
+        <section id="projects" class="section reveal">
             <div class="section-heading">
                 <p class="eyebrow">PROJECTS</p>
                 <h2>GitHub上の制作物から、今の自分らしさが出ているものを中心に表示しています。</h2>
@@ -203,7 +206,7 @@
             </div>
         </section>
 
-        <section id="contact" class="section">
+        <section id="contact" class="section reveal">
             <div class="contact-shell">
                 <div class="contact-copy">
                     <p class="eyebrow">CONTACT</p>
@@ -243,6 +246,60 @@
     </footer>
 
     <script>
+        // ── Typing animation ──
+        (function () {
+            const el = document.getElementById('typing-text');
+            if (!el) return;
+            const phrases = [
+                'フルスタックデベロッパー',
+                'Full-Stack Developer',
+                'UI / UX 実装',
+                'React & TypeScript'
+            ];
+            let phraseIdx = 0, charIdx = 0, deleting = false;
+
+            function tick() {
+                const current = phrases[phraseIdx];
+                if (!deleting) {
+                    el.textContent = current.slice(0, ++charIdx);
+                    if (charIdx === current.length) {
+                        deleting = true;
+                        setTimeout(tick, 1800);
+                        return;
+                    }
+                    setTimeout(tick, 80);
+                } else {
+                    el.textContent = current.slice(0, --charIdx);
+                    if (charIdx === 0) {
+                        deleting = false;
+                        phraseIdx = (phraseIdx + 1) % phrases.length;
+                        setTimeout(tick, 400);
+                        return;
+                    }
+                    setTimeout(tick, 40);
+                }
+            }
+            setTimeout(tick, 600);
+        })();
+
+        // ── Scroll reveal ──
+        (function () {
+            const observer = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('visible');
+                            observer.unobserve(e.target);
+                        }
+                    });
+                },
+                { threshold: 0.12 }
+            );
+            document.querySelectorAll('.reveal').forEach(function (el) {
+                observer.observe(el);
+            });
+        })();
+
         (function () {
             const form = document.getElementById('contact-form');
             const status = document.getElementById('contact-status');
