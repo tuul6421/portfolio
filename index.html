@@ -49,6 +49,7 @@
             <div class="hero-copy">
                 <p class="eyebrow">PORTFOLIO / INITIALIZING CREATIVE DEVELOPMENT MODE</p>
                 <h1>GANTUUL</h1>
+                <p class="hero-serif">Full-Stack Developer &amp; UI Craftsperson</p>
                 <p class="hero-role"><span class="typing-text" id="typing-text"></span><span class="cursor"></span></p>
                 <p class="hero-lead">
                     実運用を意識したWebプロダクトを、設計からUI実装まで一貫して形にしています。
@@ -389,10 +390,53 @@
                 return new Date(b.updated_at) - new Date(a.updated_at);
             }
 
+            // Thumb gradients per project
+            const thumbGradients = {
+                'tuulgpt':          'linear-gradient(135deg,#1a0a2e,#2d1b4e,#0a1628)',
+                'BurgerBuild-':     'linear-gradient(135deg,#1a0d05,#2e1a08,#0d0805)',
+                'Abi-construction': 'linear-gradient(135deg,#0a0f1a,#12182e,#080d18)',
+                'todo-app':         'linear-gradient(135deg,#0a1a14,#0d2418,#061210)',
+                'React-navbar':     'linear-gradient(135deg,#0f0a1e,#1a1030,#080614)',
+                'Mega-navbar':      'linear-gradient(135deg,#14080e,#220d16,#0a0408)',
+                'homework-app':     'linear-gradient(135deg,#0a1420,#0f1e32,#060e18)',
+                'test':             'linear-gradient(135deg,#0f0f18,#181824,#090912)',
+            };
+
             function createProjectCard(repo) {
                 const custom = projectCopy[repo.name] || {};
                 const card = document.createElement('article');
                 card.className = 'project-card';
+
+                // ── Thumbnail ──
+                const thumb = document.createElement('div');
+                thumb.className = 'project-thumb';
+
+                if (repo.homepage) {
+                    const img = document.createElement('img');
+                    img.src = 'https://image.thum.io/get/width/800/crop/450/noanimate/' + repo.homepage;
+                    img.alt = (custom.title || repo.name) + ' screenshot';
+                    img.loading = 'lazy';
+                    img.onerror = function () {
+                        thumb.style.background = thumbGradients[repo.name] || 'linear-gradient(135deg,#100f1e,#1a1830)';
+                        img.remove();
+                        var lbl = document.createElement('div');
+                        lbl.className = 'project-thumb-placeholder';
+                        lbl.innerHTML = '<span class="project-thumb-label">' + (custom.accent || 'Web Project') + '</span>';
+                        thumb.appendChild(lbl);
+                    };
+                    thumb.appendChild(img);
+                } else {
+                    thumb.style.background = thumbGradients[repo.name] || 'linear-gradient(135deg,#100f1e,#1a1830)';
+                    var lbl = document.createElement('div');
+                    lbl.className = 'project-thumb-placeholder';
+                    lbl.innerHTML = '<span class="project-thumb-label">' + (custom.accent || repo.language || 'Web Project') + '</span>';
+                    thumb.appendChild(lbl);
+                }
+                card.appendChild(thumb);
+
+                // ── Content ──
+                const content = document.createElement('div');
+                content.className = 'project-content';
 
                 const title = document.createElement('h3');
                 title.textContent = custom.title || formatRepoName(repo.name);
@@ -436,10 +480,11 @@
                     actions.appendChild(liveLink);
                 }
 
-                card.appendChild(title);
-                card.appendChild(description);
-                card.appendChild(meta);
-                card.appendChild(actions);
+                content.appendChild(title);
+                content.appendChild(description);
+                content.appendChild(meta);
+                content.appendChild(actions);
+                card.appendChild(content);
 
                 return card;
             }
