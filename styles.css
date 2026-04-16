@@ -369,13 +369,50 @@ body::before {
 .section-intro { margin-top: 0.9rem; color: var(--muted); line-height: 1.95; }
 
 /* ── About ── */
-.about-grid {
-    display: grid; grid-template-columns: minmax(0,0.95fr) minmax(0,1.05fr); gap: 1.2rem;
+.about-simple {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
-.about-panel {
-    padding: 1.8rem; border-radius: var(--r-lg);
-    background: var(--bg-card); border: 1px solid var(--line);
+
+.about-bio {
+    max-width: 64ch;
+    color: var(--muted-bright);
+    line-height: 2;
+    font-size: 1.02rem;
 }
+
+.about-pills {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.about-pill {
+    padding: 1.1rem 3rem;
+    border-radius: 999px;
+    background: rgba(157,143,232,0.08);
+    border: 1px solid rgba(157,143,232,0.18);
+    cursor: default;
+    transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.about-pill:hover {
+    background: rgba(157,143,232,0.14);
+    border-color: rgba(157,143,232,0.3);
+    box-shadow: 0 0 20px rgba(157,143,232,0.1);
+}
+
+.pill-label {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--text);
+}
+
+/* keep old grid classes so nothing breaks */
+.about-grid { display: grid; grid-template-columns: minmax(0,0.95fr) minmax(0,1.05fr); gap: 1.2rem; }
+.about-panel { padding: 1.8rem; border-radius: var(--r-lg); background: var(--bg-card); border: 1px solid var(--line); }
 .about-panel p { color: var(--muted); line-height: 2; }
 .about-panel p + p { margin-top: 1rem; }
 .about-cards { display: grid; gap: 1rem; }
