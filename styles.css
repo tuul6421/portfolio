@@ -449,6 +449,7 @@ body::before {
 /* Stat cards */
 .bento-stat {
     grid-column: span 1;
+    grid-row: span 2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -499,7 +500,7 @@ body::before {
 .bento-timeline::before {
     content: "";
     position: absolute;
-    left: 2.6rem; top: 6px; bottom: 6px;
+    left: 4rem; top: 6px; bottom: 6px;
     width: 1px;
     background: linear-gradient(180deg, var(--violet), var(--rose));
     opacity: 0.25;
@@ -515,8 +516,8 @@ body::before {
     font-size: 0.68rem;
     font-weight: 700;
     color: var(--muted);
-    letter-spacing: 0.06em;
-    width: 2.6rem;
+    letter-spacing: 0.04em;
+    width: 4rem;
     flex-shrink: 0;
     padding-top: 0.2rem;
 }
@@ -581,13 +582,13 @@ body::before {
 @media (max-width: 1024px) {
     .bento-grid { grid-template-columns: repeat(2, 1fr); }
     .bento-intro { grid-column: span 2; grid-row: span 1; }
-    .bento-stat  { grid-column: span 1; }
+    .bento-stat  { grid-column: span 1; grid-row: span 1; }
     .bento-edu, .bento-hobby { grid-column: span 2; }
 }
 @media (max-width: 560px) {
     .bento-grid { grid-template-columns: 1fr; }
     .bento-intro, .bento-edu, .bento-hobby { grid-column: span 1; }
-    .bento-stat { grid-column: span 1; }
+    .bento-stat { grid-column: span 1; grid-row: span 1; }
     .bento-hobby-grid { grid-template-columns: 1fr; }
 }
 
