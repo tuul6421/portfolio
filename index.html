@@ -4,213 +4,449 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gantuul Portfolio</title>
+    <meta name="description"
+        content="ガンツールのポートフォリオ。フルスタック開発、UI設計、実運用を意識したWebプロダクト制作を紹介します。" />
+    <title>Gantuul | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="#hero">ホーム</a></li>
-            <li><a href="#about">自己紹介</a></li>
-            <li><a href="#skills">スキル</a></li>
-            <li><a href="#projects">プロジェクト</a></li>
-            <li><a href="#contact">お問い合わせ</a></li>
-        </ul>
-    </nav>
-    <section id="hero">
-        <div class="content">
-            <h1>Welcome to Gantuul's Portfolio</h1>
-            <p>フルスタックデベロッパー ・ モンゴル</p>
-            <a href="#about" class="more-button">自己紹介を見る</a>
-        </div>
-    </section>
-    <section id="about">
-        <div class="about-content">
-            <img src="github-avatar.jpg" alt="Gantuul GitHub profile photo" class="profile-pic" />
-            <div class="about-text">
-                <h2>自己紹介</h2>
-                <p>モンゴル市場向けの実用的なWebプロダクトや、実運用を意識した業務システムの開発に取り組んでいます。</p>
-                <p>React / TypeScript を中心に、データベース設計からUI実装までフルスタックで一貫して対応できます。</p>
-                <ul class="about-list">
-                    <li>認証、管理画面、外部サービス連携を含む本番アプリの開発・公開経験があります。</li>
-                    <li>学習サービスやコミュニティ系サービスなど、人の役に立つプロダクトづくりに関心があります。</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="glow glow-aqua" aria-hidden="true"></div>
+    <div class="glow glow-pink" aria-hidden="true"></div>
 
-    <section id="skills">
-        <h2>スキル</h2>
-        <div class="skills-grid">
-            <div class="skill-grid">
-                <h3>HTML & CSS</h3>
-                <p>HTML と CSS を使って、見やすく使いやすいポートフォリオを構築できます。</p>
-            </div>
-            <div class="skill-grid">
+    <header class="site-header">
+        <nav class="nav-shell">
+            <a class="brand" href="#hero" aria-label="先頭へ移動">
+                <span class="brand-icon"></span>
+                <span class="brand-label">
+                    <strong>GANTUUL</strong>
+                    <small>PORTFOLIO SYSTEM</small>
+                </span>
+            </a>
 
-                <h3>JavaScript</h3>
-                <p>JavaScript でインタラクションを追加し、より動きのあるUIを実装できます。</p>
+            <div class="nav-links">
+                <a href="#about">自己紹介</a>
+                <a href="#expertise">強み</a>
+                <a href="#projects">制作実績</a>
+                <a href="#contact">連絡先</a>
             </div>
-            <div class="skill-grid">
-                <h3>React</h3>
-                <p>React を使って、再利用しやすく動的なユーザーインターフェースを作れます。</p>
+
+            <a class="nav-cta" href="#contact">相談する</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="section hero">
+            <div class="hero-copy">
+                <p class="eyebrow">PORTFOLIO / INITIALIZING CREATIVE DEVELOPMENT MODE</p>
+                <h1>GANTUUL</h1>
+                <p class="hero-role">フルスタックデベロッパー</p>
+                <p class="hero-lead">
+                    実運用を意識したWebプロダクトを、設計からUI実装まで一貫して形にしています。
+                    開発者らしいシャープさを持ちながら、やわらかく洗練された見た目にもこだわるのが私のスタイルです。
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#projects">プロジェクトを見る</a>
+                    <a class="button button-secondary" href="#about">詳しく見る</a>
+                </div>
+
+                <div class="hero-signals">
+                    <article class="signal-item">
+                        <span>01</span>
+                        <strong>React / TypeScript</strong>
+                        <p>UI品質と再利用性を意識したフロントエンド構築</p>
+                    </article>
+                    <article class="signal-item">
+                        <span>02</span>
+                        <strong>Product Thinking</strong>
+                        <p>見た目だけでなく、使いやすさと導線設計まで考える開発</p>
+                    </article>
+                    <article class="signal-item">
+                        <span>03</span>
+                        <strong>Production Ready</strong>
+                        <p>認証、管理画面、公開・改善まで見据えた実装経験</p>
+                    </article>
+                </div>
             </div>
-            <div class="skill-grid">
-                <h3>UI/UX Design</h3>
-                <p>ユーザーにとって分かりやすく、使いやすい画面設計を意識しています。</p>
+
+            <div class="hero-visual">
+                <div class="portrait-shell">
+                    <div class="portrait-frame">
+                        <img src="github-avatar.jpg" alt="ガンツールのプロフィール写真" class="profile-pic" />
+                    </div>
+                    <div class="profile-chip chip-top">SOFT AQUA UI</div>
+                    <div class="profile-chip chip-bottom">MONGOLIA / REMOTE</div>
+                </div>
+
+                <article class="console-card">
+                    <div class="console-top">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <p class="console-command">$ gantuul.profile --summary</p>
+                    <div class="console-list">
+                        <div class="console-row">
+                            <span>専門</span>
+                            <strong>フロントエンド / UI実装 / Web制作</strong>
+                        </div>
+                        <div class="console-row">
+                            <span>対応範囲</span>
+                            <strong>設計 / 開発 / デプロイ / 改善</strong>
+                        </div>
+                        <div class="console-row">
+                            <span>関心領域</span>
+                            <strong>学習系・コミュニティ系・実用プロダクト</strong>
+                        </div>
+                    </div>
+                </article>
             </div>
-        </div>
-    </section>
-    <section id="projects">
-        <h2>GitHub プロジェクト</h2>
-        <p class="section-intro">GitHub で公開しているプロジェクトの中から、最近の開発内容をこのポートフォリオに表示しています。</p>
-        <div id="projects-grid" class="projects-grid" aria-live="polite">
-            <p class="projects-loading">プロジェクトを読み込み中です...</p>
-        </div>
-    </section>
-    <section id="contact">
-        <h2>お問い合わせ</h2>
-        <form id="contact-form" aria-label="Contact form">
-            <input type="text" name="name" placeholder="お名前" required />
-            <input type="email" name="email" placeholder="メールアドレス" required />
-            <textarea name="message" rows="6" placeholder="メッセージを入力してください" required></textarea>
-            <button type="submit" class="more-button">メッセージを送る</button>
-            <p id="contact-status" aria-live="polite" style="text-align:center;margin-top:.5rem"></p>
-        </form>
-    </section>
-    <footer>
-        <p>&copy; 2025 Gantuul Portfolio. All rights reserved.</p>
+        </section>
+
+        <section id="about" class="section">
+            <div class="section-heading">
+                <p class="eyebrow">ABOUT</p>
+                <h2>技術力だけでなく、画面の空気感や印象まで設計する開発を目指しています。</h2>
+            </div>
+
+            <div class="about-grid">
+                <article class="about-panel">
+                    <p>
+                        モンゴル市場向けの実用的なWebサービスや、日常で本当に使われる管理システムの開発に取り組んでいます。
+                        UIをただ作るのではなく、情報の見せ方や操作のしやすさも含めて整えることが得意です。
+                    </p>
+                    <p>
+                        直感的で信頼感のある画面づくりに加え、React / TypeScript を中心にした実装で、
+                        使いやすく保守しやすいプロダクトへ落とし込むことを大切にしています。
+                    </p>
+                </article>
+
+                <div class="about-cards">
+                    <article class="info-card">
+                        <span class="info-index">01</span>
+                        <h3>フルスタック対応</h3>
+                        <p>データ設計から画面実装まで一貫して進められるので、全体の流れを崩さずに仕上げられます。</p>
+                    </article>
+                    <article class="info-card">
+                        <span class="info-index">02</span>
+                        <h3>本番運用の視点</h3>
+                        <p>認証、管理画面、外部サービス連携など、公開後に必要になる要素まで見据えた開発経験があります。</p>
+                    </article>
+                    <article class="info-card">
+                        <span class="info-index">03</span>
+                        <h3>やさしい表現力</h3>
+                        <p>ITらしいシャープさを持ちながらも、やわらかく親しみやすいビジュアルに調整するのが好きです。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="expertise" class="section">
+            <div class="section-heading">
+                <p class="eyebrow">EXPERTISE</p>
+                <h2>私が強く意識しているのは、「作れること」よりも「きれいに届くこと」です。</h2>
+            </div>
+
+            <div class="expertise-grid">
+                <article class="expertise-card">
+                    <p class="card-no">01</p>
+                    <h3>UI実装</h3>
+                    <p>視線誘導、余白、タイポグラフィを意識しながら、プロダクトの印象を整えるフロントエンド実装。</p>
+                </article>
+                <article class="expertise-card">
+                    <p class="card-no">02</p>
+                    <h3>フロントエンド構成</h3>
+                    <p>React / TypeScript を使って、再利用性と保守性を保ちながら画面を構築します。</p>
+                </article>
+                <article class="expertise-card">
+                    <p class="card-no">03</p>
+                    <h3>管理画面・業務画面</h3>
+                    <p>情報量が多い画面でも、読みやすく操作しやすい構成に整理することができます。</p>
+                </article>
+                <article class="expertise-card">
+                    <p class="card-no">04</p>
+                    <h3>公開と改善</h3>
+                    <p>Vercel などの環境への反映や、その後の調整まで含めて継続的に改善できます。</p>
+                </article>
+            </div>
+
+            <div class="stack-row" aria-label="技術スタック">
+                <span>React</span>
+                <span>TypeScript</span>
+                <span>JavaScript</span>
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>UI Design</span>
+                <span>GitHub</span>
+                <span>Vercel</span>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="section-heading">
+                <p class="eyebrow">PROJECTS</p>
+                <h2>GitHub上の制作物から、今の自分らしさが出ているものを中心に表示しています。</h2>
+                <p class="section-intro">
+                    開発中のもの、デモがあるもの、UIの方向性が見えるものを優先して表示しています。
+                </p>
+            </div>
+
+            <div id="projects-grid" class="projects-grid" aria-live="polite">
+                <p class="projects-loading">GitHub プロジェクトを読み込み中です...</p>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="contact-shell">
+                <div class="contact-copy">
+                    <p class="eyebrow">CONTACT</p>
+                    <h2>やわらかさのあるIT系ポートフォリオや、実用的なWeb画面づくりの相談を歓迎しています。</h2>
+                    <p>
+                        ポートフォリオ制作、フロントエンド実装、UI改善など、雰囲気づくりまで含めて一緒に整えたい案件があればお気軽にご連絡ください。
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:tuul.ga0604@gmail.com">tuul.ga0604@gmail.com</a>
+                        <a href="https://github.com/tuul6421" target="_blank" rel="noreferrer">github.com/tuul6421</a>
+                        <span>フロントエンド / Web制作 / UI改善</span>
+                    </div>
+                </div>
+
+                <form id="contact-form" class="contact-form" aria-label="Contact form">
+                    <label>
+                        <span>お名前</span>
+                        <input type="text" name="name" placeholder="お名前を入力してください" required />
+                    </label>
+                    <label>
+                        <span>メールアドレス</span>
+                        <input type="email" name="email" placeholder="メールアドレスを入力してください" required />
+                    </label>
+                    <label>
+                        <span>メッセージ</span>
+                        <textarea name="message" rows="6" placeholder="ご相談内容を入力してください" required></textarea>
+                    </label>
+                    <button type="submit" class="button button-primary button-full">送信する</button>
+                    <p id="contact-status" class="contact-status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Designed and coded by Gantuul.</p>
     </footer>
-</body>
 
-<script>
-    // Simple client-side email sender using mailto: (opens user's mail app).
-    // Replace `recipient` with your real email address to receive messages.
-    (function () {
-        const form = document.getElementById('contact-form');
-        const status = document.getElementById('contact-status');
-        const recipient = 'your.email@example.com';
-        const projectsGrid = document.getElementById('projects-grid');
+    <script>
+        (function () {
+            const form = document.getElementById('contact-form');
+            const status = document.getElementById('contact-status');
+            const projectsGrid = document.getElementById('projects-grid');
+            const recipient = 'tuul.ga0604@gmail.com';
 
-        function formatRepoName(name) {
-            return name
-                .replace(/[-_]+/g, ' ')
-                .replace(/\s+/g, ' ')
-                .trim();
-        }
+            const excludedRepos = new Set([
+                'tuul6421',
+                'gantuul',
+                'portfolia',
+                'taniltsuulgahaha',
+                'taniltsuulga',
+                'test-1-',
+                'cafe-menu-'
+            ]);
 
-        function createProjectCard(repo) {
-            const card = document.createElement('article');
-            card.className = 'project-card';
+            const projectCopy = {
+                'tuulgpt': {
+                    title: 'TuulGPT',
+                    description: 'AIをテーマにしたWebプロダクト実験。TypeScript を中心に、UIの見せ方と構成を意識して制作しています。',
+                    accent: 'AI / Product'
+                },
+                'BurgerBuild-': {
+                    title: 'Burger Build',
+                    description: '商品の見せ方や導線設計を意識した、ランディング寄りのビジュアルデモです。',
+                    accent: 'Landing UI'
+                },
+                'Abi-construction': {
+                    title: 'ABI Construction',
+                    description: '建設会社向けのコーポレートサイト案。信頼感のある見せ方と情報整理を意識しています。',
+                    accent: 'Corporate'
+                },
+                'todo-app': {
+                    title: 'Todo App',
+                    description: '基本的な状態管理と操作性を確認しながら、使いやすいUIに整えたタスク管理アプリです。',
+                    accent: 'JavaScript'
+                },
+                'React-navbar': {
+                    title: 'React Navbar',
+                    description: 'Reactで作成した再利用しやすいナビゲーションUIの検証プロジェクトです。',
+                    accent: 'Component'
+                },
+                'Mega-navbar': {
+                    title: 'Mega Navbar',
+                    description: '情報量の多いサイトに向けた、整理されたメガメニュー構成のUI実験です。',
+                    accent: 'Navigation'
+                },
+                'homework-app': {
+                    title: 'Homework App',
+                    description: '学習管理をわかりやすくするための、シンプルな学生向けUIコンセプトです。',
+                    accent: 'Education'
+                },
+                'test': {
+                    title: 'Static Demo',
+                    description: 'レイアウトやデプロイを確認しながら、軽量な画面づくりを試した静的デモです。',
+                    accent: 'Static Site'
+                }
+            };
 
-            const title = document.createElement('h3');
-            title.textContent = formatRepoName(repo.name);
+            const preferredOrder = Object.keys(projectCopy);
 
-            const description = document.createElement('p');
-            description.className = 'project-description';
-            description.textContent = repo.description || 'GitHub で公開しているプロジェクトです。';
-
-            const meta = document.createElement('div');
-            meta.className = 'project-meta';
-
-            const language = document.createElement('span');
-            language.className = 'project-tag';
-            language.textContent = repo.language || 'Web';
-
-            const updated = document.createElement('span');
-            updated.className = 'project-tag';
-            updated.textContent = '更新: ' + new Date(repo.updated_at).toLocaleDateString('ja-JP');
-
-            meta.appendChild(language);
-            meta.appendChild(updated);
-
-            const actions = document.createElement('div');
-            actions.className = 'project-actions';
-
-            const githubLink = document.createElement('a');
-            githubLink.href = repo.html_url;
-            githubLink.target = '_blank';
-            githubLink.rel = 'noreferrer';
-            githubLink.className = 'project-link';
-            githubLink.textContent = 'GitHub で見る';
-            actions.appendChild(githubLink);
-
-            if (repo.homepage) {
-                const liveLink = document.createElement('a');
-                liveLink.href = repo.homepage;
-                liveLink.target = '_blank';
-                liveLink.rel = 'noreferrer';
-                liveLink.className = 'project-link project-link-secondary';
-                liveLink.textContent = 'デモを見る';
-                actions.appendChild(liveLink);
+            function formatRepoName(name) {
+                return name
+                    .replace(/[-_]+/g, ' ')
+                    .replace(/\s+/g, ' ')
+                    .trim();
             }
 
-            card.appendChild(title);
-            card.appendChild(description);
-            card.appendChild(meta);
-            card.appendChild(actions);
+            function sortRepos(a, b) {
+                const aPriority = preferredOrder.indexOf(a.name);
+                const bPriority = preferredOrder.indexOf(b.name);
 
-            return card;
-        }
-
-        fetch('https://api.github.com/users/tuul6421/repos?sort=updated&per_page=100')
-            .then(function (response) {
-                if (!response.ok) {
-                    throw new Error('Failed to load projects');
+                if (aPriority !== -1 || bPriority !== -1) {
+                    if (aPriority === -1) {
+                        return 1;
+                    }
+                    if (bPriority === -1) {
+                        return -1;
+                    }
+                    return aPriority - bPriority;
                 }
-                return response.json();
-            })
-            .then(function (repos) {
-                const filteredRepos = repos
-                    .filter(function (repo) {
-                        return !repo.fork &&
-                            repo.name !== 'tuul6421' &&
-                            repo.name !== 'gantuul' &&
-                            repo.name !== 'taniltsuulgahaha';
-                    })
-                    .slice(0, 6);
 
-                projectsGrid.innerHTML = '';
+                if (Boolean(b.homepage) !== Boolean(a.homepage)) {
+                    return Number(Boolean(b.homepage)) - Number(Boolean(a.homepage));
+                }
 
-                if (!filteredRepos.length) {
-                    const emptyMessage = document.createElement('p');
-                    emptyMessage.className = 'projects-loading';
-                    emptyMessage.textContent = '表示できるプロジェクトがまだありません。';
-                    projectsGrid.appendChild(emptyMessage);
+                return new Date(b.updated_at) - new Date(a.updated_at);
+            }
+
+            function createProjectCard(repo) {
+                const custom = projectCopy[repo.name] || {};
+                const card = document.createElement('article');
+                card.className = 'project-card';
+
+                const title = document.createElement('h3');
+                title.textContent = custom.title || formatRepoName(repo.name);
+
+                const description = document.createElement('p');
+                description.className = 'project-description';
+                description.textContent = custom.description || repo.description || '現在の制作方向を表すGitHubプロジェクトです。';
+
+                const meta = document.createElement('div');
+                meta.className = 'project-meta';
+
+                const accentTag = document.createElement('span');
+                accentTag.className = 'project-tag';
+                accentTag.textContent = custom.accent || repo.language || 'Web Project';
+
+                const languageTag = document.createElement('span');
+                languageTag.className = 'project-tag project-tag-soft';
+                languageTag.textContent = repo.language || 'Frontend';
+
+                meta.appendChild(accentTag);
+                meta.appendChild(languageTag);
+
+                const actions = document.createElement('div');
+                actions.className = 'project-actions';
+
+                const githubLink = document.createElement('a');
+                githubLink.href = repo.html_url;
+                githubLink.target = '_blank';
+                githubLink.rel = 'noreferrer';
+                githubLink.className = 'project-link';
+                githubLink.textContent = 'GitHubを見る';
+                actions.appendChild(githubLink);
+
+                if (repo.homepage) {
+                    const liveLink = document.createElement('a');
+                    liveLink.href = repo.homepage;
+                    liveLink.target = '_blank';
+                    liveLink.rel = 'noreferrer';
+                    liveLink.className = 'project-link project-link-secondary';
+                    liveLink.textContent = 'デモを見る';
+                    actions.appendChild(liveLink);
+                }
+
+                card.appendChild(title);
+                card.appendChild(description);
+                card.appendChild(meta);
+                card.appendChild(actions);
+
+                return card;
+            }
+
+            fetch('https://api.github.com/users/tuul6421/repos?sort=updated&per_page=100')
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error('Failed to load projects');
+                    }
+                    return response.json();
+                })
+                .then(function (repos) {
+                    const curatedRepos = repos
+                        .filter(function (repo) {
+                            return !repo.fork && !excludedRepos.has(repo.name);
+                        })
+                        .sort(sortRepos)
+                        .slice(0, 6);
+
+                    projectsGrid.innerHTML = '';
+
+                    if (!curatedRepos.length) {
+                        const emptyMessage = document.createElement('p');
+                        emptyMessage.className = 'projects-loading';
+                        emptyMessage.textContent = '表示できるプロジェクトがまだありません。';
+                        projectsGrid.appendChild(emptyMessage);
+                        return;
+                    }
+
+                    curatedRepos.forEach(function (repo) {
+                        projectsGrid.appendChild(createProjectCard(repo));
+                    });
+                })
+                .catch(function () {
+                    projectsGrid.innerHTML = '<p class="projects-loading">GitHub プロジェクトの読み込みに失敗しました。</p>';
+                });
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const name = form.elements['name'].value.trim();
+                const email = form.elements['email'].value.trim();
+                const message = form.elements['message'].value.trim();
+
+                if (!name || !email || !message) {
+                    status.textContent = 'すべての項目を入力してください。';
+                    status.style.color = '#ff9bbc';
                     return;
                 }
 
-                filteredRepos.forEach(function (repo) {
-                    projectsGrid.appendChild(createProjectCard(repo));
-                });
-            })
-            .catch(function () {
-                projectsGrid.innerHTML = '<p class=\"projects-loading\">GitHub プロジェクトの読み込みに失敗しました。</p>';
+                const subject = encodeURIComponent('Portfolio inquiry from ' + name);
+                const body = encodeURIComponent(
+                    'Name: ' + name + '\n' +
+                    'Email: ' + email + '\n\n' +
+                    message
+                );
+
+                window.location.href = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
+                status.textContent = 'メールアプリを開いています...';
+                status.style.color = '#8be9ff';
+                form.reset();
             });
-
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const name = form.elements['name'].value.trim();
-            const email = form.elements['email'].value.trim();
-            const message = form.elements['message'].value.trim();
-
-            if (!name || !email || !message) {
-                status.textContent = 'すべての項目を入力してください。';
-                status.style.color = 'crimson';
-                return;
-            }
-
-            const subject = encodeURIComponent('Portfolio contact from ' + name);
-            const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
-            const mailto = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
-
-            window.location.href = mailto;
-            status.textContent = 'メールアプリを開いています...';
-            status.style.color = 'green';
-            form.reset();
-        });
-    })();
-</script>
+        })();
+    </script>
+</body>
 
 </html>
