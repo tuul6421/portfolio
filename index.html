@@ -314,8 +314,42 @@
                 'taniltsuulgahaha',
                 'taniltsuulga',
                 'test-1-',
-                'cafe-menu-'
+                'cafe-menu-',
+                'blacklist-app',
+                'blacklist',
+                'tuul.store',
+                'tuul-store',
+                'moviehub',
+                'movie-hub'
             ]);
+
+            // ── Featured projects (always shown first) ──
+            const featuredProjects = [
+                {
+                    title: 'Blacklist.mn',
+                    description: 'モンゴル向けの詐欺師通報プラットフォーム。電話番号・銀行口座・氏名を検索でき、トラストスコアとコミュニティ投票で信頼性を検証。',
+                    accent: 'Community',
+                    language: 'TypeScript',
+                    homepage: 'https://blacklist.mn',
+                    html_url: 'https://github.com/tuul6421/blacklist-app'
+                },
+                {
+                    title: 'tuul.store',
+                    description: '商品カタログ・カート・チェックアウト・クーポン機能を備えたファッションECサイト。管理者・パートナー向け専用ポータルも実装。',
+                    accent: 'E-Commerce',
+                    language: 'React',
+                    homepage: 'https://tuul.store',
+                    html_url: 'https://github.com/tuul6421/tuul-store'
+                },
+                {
+                    title: 'Movie Hub',
+                    description: 'モンゴルのユーザー向け映画発見・閲覧プラットフォーム。直感的なUIで映画情報を整理して表示。',
+                    accent: 'Entertainment',
+                    language: 'TypeScript',
+                    homepage: null,
+                    html_url: 'https://github.com/tuul6421/moviehub'
+                }
+            ];
 
             const projectCopy = {
                 'tuulgpt': {
@@ -402,92 +436,113 @@
                 'test':             'linear-gradient(135deg,#0f0f18,#181824,#090912)',
             };
 
-            function createProjectCard(repo) {
-                const custom = projectCopy[repo.name] || {};
-                const card = document.createElement('article');
-                card.className = 'project-card';
-
-                // ── Thumbnail ──
+            function buildThumb(homepage, title, accent, gradKey) {
                 const thumb = document.createElement('div');
                 thumb.className = 'project-thumb';
-
-                if (repo.homepage) {
+                if (homepage) {
                     const img = document.createElement('img');
-                    img.src = 'https://image.thum.io/get/width/800/crop/450/noanimate/' + repo.homepage;
-                    img.alt = (custom.title || repo.name) + ' screenshot';
+                    img.src = 'https://image.thum.io/get/width/800/crop/450/noanimate/' + homepage;
+                    img.alt = title + ' screenshot';
                     img.loading = 'lazy';
                     img.onerror = function () {
-                        thumb.style.background = thumbGradients[repo.name] || 'linear-gradient(135deg,#100f1e,#1a1830)';
+                        thumb.style.background = thumbGradients[gradKey] || 'linear-gradient(135deg,#100f1e,#1a1830)';
                         img.remove();
                         var lbl = document.createElement('div');
                         lbl.className = 'project-thumb-placeholder';
-                        lbl.innerHTML = '<span class="project-thumb-label">' + (custom.accent || 'Web Project') + '</span>';
+                        lbl.innerHTML = '<span class="project-thumb-label">' + accent + '</span>';
                         thumb.appendChild(lbl);
                     };
                     thumb.appendChild(img);
                 } else {
-                    thumb.style.background = thumbGradients[repo.name] || 'linear-gradient(135deg,#100f1e,#1a1830)';
+                    thumb.style.background = thumbGradients[gradKey] || 'linear-gradient(135deg,#100f1e,#1a1830)';
                     var lbl = document.createElement('div');
                     lbl.className = 'project-thumb-placeholder';
-                    lbl.innerHTML = '<span class="project-thumb-label">' + (custom.accent || repo.language || 'Web Project') + '</span>';
+                    lbl.innerHTML = '<span class="project-thumb-label">' + accent + '</span>';
                     thumb.appendChild(lbl);
                 }
-                card.appendChild(thumb);
+                return thumb;
+            }
 
-                // ── Content ──
+            function buildContent(title, description, accent, language, githubUrl, homepage) {
                 const content = document.createElement('div');
                 content.className = 'project-content';
 
-                const title = document.createElement('h3');
-                title.textContent = custom.title || formatRepoName(repo.name);
+                const h3 = document.createElement('h3');
+                h3.textContent = title;
 
-                const description = document.createElement('p');
-                description.className = 'project-description';
-                description.textContent = custom.description || repo.description || '現在の制作方向を表すGitHubプロジェクトです。';
+                const desc = document.createElement('p');
+                desc.className = 'project-description';
+                desc.textContent = description;
 
                 const meta = document.createElement('div');
                 meta.className = 'project-meta';
-
-                const accentTag = document.createElement('span');
-                accentTag.className = 'project-tag';
-                accentTag.textContent = custom.accent || repo.language || 'Web Project';
-
-                const languageTag = document.createElement('span');
-                languageTag.className = 'project-tag project-tag-soft';
-                languageTag.textContent = repo.language || 'Frontend';
-
-                meta.appendChild(accentTag);
-                meta.appendChild(languageTag);
+                const t1 = document.createElement('span');
+                t1.className = 'project-tag';
+                t1.textContent = accent;
+                const t2 = document.createElement('span');
+                t2.className = 'project-tag project-tag-soft';
+                t2.textContent = language;
+                meta.appendChild(t1);
+                meta.appendChild(t2);
 
                 const actions = document.createElement('div');
                 actions.className = 'project-actions';
-
-                const githubLink = document.createElement('a');
-                githubLink.href = repo.html_url;
-                githubLink.target = '_blank';
-                githubLink.rel = 'noreferrer';
-                githubLink.className = 'project-link';
-                githubLink.textContent = 'GitHubを見る';
-                actions.appendChild(githubLink);
-
-                if (repo.homepage) {
-                    const liveLink = document.createElement('a');
-                    liveLink.href = repo.homepage;
-                    liveLink.target = '_blank';
-                    liveLink.rel = 'noreferrer';
-                    liveLink.className = 'project-link project-link-secondary';
-                    liveLink.textContent = 'デモを見る';
-                    actions.appendChild(liveLink);
+                const ghLink = document.createElement('a');
+                ghLink.href = githubUrl; ghLink.target = '_blank'; ghLink.rel = 'noreferrer';
+                ghLink.className = 'project-link';
+                ghLink.textContent = 'GitHubを見る';
+                actions.appendChild(ghLink);
+                if (homepage) {
+                    const live = document.createElement('a');
+                    live.href = homepage; live.target = '_blank'; live.rel = 'noreferrer';
+                    live.className = 'project-link project-link-secondary';
+                    live.textContent = 'デモを見る';
+                    actions.appendChild(live);
                 }
-
-                content.appendChild(title);
-                content.appendChild(description);
+                content.appendChild(h3);
+                content.appendChild(desc);
                 content.appendChild(meta);
                 content.appendChild(actions);
-                card.appendChild(content);
+                return content;
+            }
 
+            function createFeaturedCard(p) {
+                const card = document.createElement('article');
+                card.className = 'project-card';
+                card.appendChild(buildThumb(p.homepage, p.title, p.accent, p.title));
+                card.appendChild(buildContent(p.title, p.description, p.accent, p.language, p.html_url, p.homepage));
                 return card;
             }
+
+            function createProjectCard(repo) {
+                const custom = projectCopy[repo.name] || {};
+                const card = document.createElement('article');
+                card.className = 'project-card';
+                card.appendChild(buildThumb(
+                    repo.homepage,
+                    custom.title || formatRepoName(repo.name),
+                    custom.accent || repo.language || 'Web Project',
+                    repo.name
+                ));
+
+                // ── Content ──
+                const content = document.createElement('div');
+                card.appendChild(buildContent(
+                    custom.title || formatRepoName(repo.name),
+                    custom.description || repo.description || '現在の制作方向を表すGitHubプロジェクトです。',
+                    custom.accent || repo.language || 'Web Project',
+                    repo.language || 'Frontend',
+                    repo.html_url,
+                    repo.homepage
+                ));
+                return card;
+            }
+
+            // ── Render featured projects immediately ──
+            projectsGrid.innerHTML = '';
+            featuredProjects.forEach(function (p) {
+                projectsGrid.appendChild(createFeaturedCard(p));
+            });
 
             fetch('https://api.github.com/users/tuul6421/repos?sort=updated&per_page=100')
                 .then(function (response) {
@@ -502,24 +557,14 @@
                             return !repo.fork && !excludedRepos.has(repo.name);
                         })
                         .sort(sortRepos)
-                        .slice(0, 6);
-
-                    projectsGrid.innerHTML = '';
-
-                    if (!curatedRepos.length) {
-                        const emptyMessage = document.createElement('p');
-                        emptyMessage.className = 'projects-loading';
-                        emptyMessage.textContent = '表示できるプロジェクトがまだありません。';
-                        projectsGrid.appendChild(emptyMessage);
-                        return;
-                    }
+                        .slice(0, 3); // 3 more after the 3 featured = 6 total
 
                     curatedRepos.forEach(function (repo) {
                         projectsGrid.appendChild(createProjectCard(repo));
                     });
                 })
                 .catch(function () {
-                    projectsGrid.innerHTML = '<p class="projects-loading">GitHub プロジェクトの読み込みに失敗しました。</p>';
+                    // featured projects already shown, nothing more to add
                 });
 
             form.addEventListener('submit', function (event) {
